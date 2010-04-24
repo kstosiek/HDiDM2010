@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Run all tests, should be launched ONLY from src/tests
-# directory.
+# directory. Cd into src/tests and type sh run_tests.sh.
 
 export PYTHONPATH="../"
 
