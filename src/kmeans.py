@@ -16,12 +16,12 @@ if __name__ == "__main__":
 	# Prepare data.
 
 	data = utils.parse_data("../data/notowania.txt")
-	price_vecs = utils.make_price_vecs(data)
+	price_vecs = utils.make_prices_vecs(data)
 
 	# Run K-means.
 
 	labels, wcss, n = Pycluster.kcluster(price_vecs, number_of_clusters, 
-			dist = 'e', npass = 100, method = 'a')
+			dist = 'e', npass = 500, method = 'a')
 	
 	# Print output to file.
 

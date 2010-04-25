@@ -35,10 +35,10 @@ class UtilityFunctions(unittest.TestCase):
 		self.assertEqual(dict_tvn[20100413], 16.5)
 		self.assertEqual(dict_tvn[20100412], 9.5)
 	
-	def testGetPriceVecs(self):
-		"""Obtain list of price vectors."""
+	def testGetPricesVecs(self):
+		"""Obtaining list of prices vectors."""
 
-		vecs = utils.make_price_vecs(self.data1)
+		vecs = utils.make_prices_vecs(self.data1)
 		self.assertEqual(vecs, [[9.5, 9, 10.5, 20.5], [9.5, 16.5, 17.5, 18.5]])
 	
 	def testMakeGroupsFromLabels(self):
@@ -64,6 +64,15 @@ class UtilityFunctions(unittest.TestCase):
 		groups = utils.make_groups_from_labels(labels3, self.data2)
 		self.assertEqual(groups, {0: ["A1"], 1: ["A2"], 2: ["A3"],
 				3: ["A4"], 4: ["A5"], 5: ["A6"]})
+	
+	def testMakePricesVecByCompany(self):
+		"""Obtaining prices vector by company name."""
+
+		ambra_prices_vec = utils.make_prices_vec_by_company(self.data1, "AMBRA")		
+		self.assertEqual(ambra_prices_vec, [9.5, 9, 10.5, 20.5])
+
+		tvn_prices_vec = utils.make_prices_vec_by_company(self.data1, "TVN")		
+		self.assertEqual(tvn_prices_vec, [9.5, 16.5, 17.5, 18.5])
 
 if __name__ == "__main__":
 	unittest.main()

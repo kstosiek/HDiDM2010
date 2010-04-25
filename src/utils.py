@@ -11,7 +11,7 @@ def parse_data(file_path):
 		before, sep, after = line.partition(',')
 		if sep == "" and after == "":
 			company_name = before[0:-1]
-			output.append([company_name, {}])
+			output.append([company_name.strip(), {}])
 			idx = idx + 1
 		else:
 			date = before
@@ -23,9 +23,23 @@ def parse_data(file_path):
 	
 	return output
 
-def make_price_vecs(data):
+def make_prices_vec_by_company(data, company_name):
+	"""Get prices vector for concrete company. Oldest records are at the
+	begining of vector."""
+
+	# Find stock prices for company company_name.
+
+	elem = filter(lambda x: x[0].strip() == company_name.strip(), data)
+	sorted_keys = elem[0][1].keys()
+	sorted_keys.sort()
+
+	date_price_dict = elem[0][1]
+
+	return [date_price_dict[key] for key in sorted_keys]
+	
+def make_prices_vecs(data):
 	"""Get price vectors. Oldest records are at the begining of 
-	each list."""
+	each vector."""
 
 	output = []
 
@@ -41,6 +55,10 @@ def make_price_vecs(data):
 		output.append([date_price_dict[key] for key in sorted_keys])
 	
 	return output;
+
+def make_prices_diffs_vecs():
+	# FIXME
+	pass
 
 def make_groups_from_labels(labels, data):
 	"""Make list of clusters based on computed labels."""
