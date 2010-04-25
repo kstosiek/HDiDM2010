@@ -1,4 +1,3 @@
-import Pycluster
 import tempfile
 import utils
 import sys
@@ -59,8 +58,6 @@ if __name__ == "__main__":
 				"' with lines\n")
 		gnuplot_commands_tmpfile.write("pause mouse any")
 		gnuplot_commands_tmpfile.close()
-
-		plot_data_tmpfile.close()
 
 		print "Click in the plot to exit... (hit Ctrl-C if hangs)"
 
