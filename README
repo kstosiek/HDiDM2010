@@ -1,0 +1,6 @@
+Sample usage as for now:
+
+cd src
+python kmeans.py 10 output
+python plot_group.py output 1
+python plot_group.py output 8
