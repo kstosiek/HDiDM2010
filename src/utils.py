@@ -1,4 +1,3 @@
-import Pycluster
 import sys
 
 def parse_data(file_path):
