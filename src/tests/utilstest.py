@@ -73,6 +73,13 @@ class UtilityFunctions(unittest.TestCase):
 
 		tvn_prices_vec = utils.make_prices_vec_by_company(self.data1, "TVN")		
 		self.assertEqual(tvn_prices_vec, [9.5, 16.5, 17.5, 18.5])
+	
+	def testMakePricesDifferencesVectors(self):
+
+		# TODO: Finish this test.
+		
+		diff_vecs = utils.make_prices_diffs_vecs(self.data1)
+
 
 if __name__ == "__main__":
 	unittest.main()

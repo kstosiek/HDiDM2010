@@ -55,9 +55,23 @@ def make_prices_vecs(data):
 	
 	return output;
 
-def make_prices_diffs_vecs():
-	# FIXME
-	pass
+def make_prices_diffs_vecs(data):
+	"""Make vectors of prices differences."""
+
+	output = []
+
+	prices_vecs = make_prices_vecs(data)
+
+	print "len(prices_vecs) = ", len(prices_vecs)
+
+	vec_num = 0
+	for price_vec in prices_vecs:
+		output.append([])
+		for idx in range(0, len(price_vec) - 1):
+			output[vec_num].append(price_vec[idx + 1] - price_vec[idx])
+		vec_num = vec_num + 1
+	
+	return output
 
 def make_groups_from_labels(labels, data):
 	"""Make list of clusters based on computed labels."""
