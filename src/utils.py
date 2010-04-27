@@ -62,8 +62,6 @@ def make_prices_diffs_vecs(data):
 
 	prices_vecs = make_prices_vecs(data)
 
-	print "len(prices_vecs) = ", len(prices_vecs)
-
 	vec_num = 0
 	for price_vec in prices_vecs:
 		output.append([])

@@ -76,10 +76,12 @@ class UtilityFunctions(unittest.TestCase):
 	
 	def testMakePricesDifferencesVectors(self):
 
-		# TODO: Finish this test.
-		
 		diff_vecs = utils.make_prices_diffs_vecs(self.data1)
+		self.assertEqual(diff_vecs, [[-0.5, 1.5, 10.0], [7.0, 1.0, 1.0]])
 
+		data3 = [["A", {0: 1, 1: 1}], ["B", {0: 1, 1: 1}]]
+		diff_vecs = utils.make_prices_diffs_vecs(data3)
+		self.assertEqual(diff_vecs, [[0], [0]])
 
 if __name__ == "__main__":
 	unittest.main()
