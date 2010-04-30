@@ -10,7 +10,7 @@ if __name__ == "__main__":
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], "hc:o:i:d:D",
 				["help", "output=", "clusters-num=", "iters-num=",
-				 "dist="])
+				 "dist=","differential"])
 	except getopt.GetoptError, err:
 		print str(err)
 		sys.exit(2)
