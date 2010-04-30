@@ -5,8 +5,6 @@
   się sieci Kohonena, aczkolwiek wydaje mi się, że na połówkę
   projektu możnaby skupić się na K-means, coby sobie coś do
   implementacji na później zostawić. Sam nie wiem.
-- Odpalanie K-means nie na wektorach cen, ale na wektorach
-  różnic cen (jako opcja?). Krótkie porównanie tych dwóch metod?
 - Interpretacja wyników dla podziału zrobionego przez K-means.
   Nie wiem jaka liczba grup jest tu odpowiednim parametrem do K-means.
   Wnioski najlepiej odrazu spisywać w dokumentacji.
