@@ -8,8 +8,8 @@ if __name__ == "__main__":
 	# Parse command line arguments.
 
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], "hc:o:i:d:D", 
-				["help", "output=", "clusters-num=", "iters-num=", 
+		opts, args = getopt.getopt(sys.argv[1:], "hc:o:i:d:D",
+				["help", "output=", "clusters-num=", "iters-num=",
 				 "dist="])
 	except getopt.GetoptError, err:
 		print str(err)
