@@ -11,17 +11,6 @@
 - Aktualnie mamy 300 dni notowań (czyli jakieś 1.5 roku). Można obciąć
   te wektory do ujęcia tygodniowego/miesięcznego i odpalić na tak skróconych
   wektorach algorytmy grupowania. Porównać wyniki.
-- Dane dotyczące wydarzeń historycznych przydałyby się w postaci:
-
-  DATA_OD1 DATA_DO1 wydarzenie1 polityczne
-  DATA_OD2 DATA_DO2 wydarzenie2 sportowe
-  ...
-
-  Mając je w takiej postaci możnaby sprawdzić dla każdego z nich jak każda
-  ze spółek wzrosła/spadła procentowo między DATA_ODi a DATA_DOi (i-te wydarzenie).
-  Jeśli wydarzenie będą miały dodatkowo kategorie to później dla danej
-  spółki mamy rodzaje wydarzeń na które reaguje... no, jakoś tak, albo inaczej
-  trzeba to zrobić :)
 - Szczerze mówiąc to nie wiem co dalej, trzeba by mały research zrobić
   co jeszcze będzie trzeba dodać, żeby uznać ten projekt za skończony.
 - Czy kod ma być bardziej object-oriented?
