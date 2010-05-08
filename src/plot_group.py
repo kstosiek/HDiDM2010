@@ -8,12 +8,26 @@ if __name__ == "__main__":
 	if len(sys.argv) != 3:
 		print "Usage: python plot_group.py <clusters file> <cluster number>"
 		sys.exit(1)
+	
 
 	# Parse command line arguments.
 
-	clusters_file_path = sys.argv[1]
-	clusters_file = open(clusters_file_path, "r")	
-	cluster_number = int(sys.argv[2])
+	err_msg = ""
+
+	try:
+		clusters_file_path = sys.argv[1]
+		clusters_file = open(clusters_file_path, "r")	
+		cluster_number = int(sys.argv[2])
+	except ValueError:	
+		err_msg = "error: wrong cluster number"
+	except IOError:
+		err_msg = "error: couldn't open file with clusters"
+	
+	# If error message is not empty print it and exit.
+	
+	if err_msg != "":
+		print err_msg
+		sys.exit(1)
 
 	# Parse stock data.
 
