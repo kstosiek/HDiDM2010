@@ -25,7 +25,7 @@ def detect_cluster_number(clusters_file_path):
 				n = tmp_n
 	return n+1
 
-def plot_single_cluster(clusters_file_path, cluster_number):
+def plot_single_cluster(clusters_file_path, cluster_number, average=False):
 	clusters_file = open(clusters_file_path, "r")	
 
 	# Create temporary file for plot data.
@@ -45,21 +45,36 @@ def plot_single_cluster(clusters_file_path, cluster_number):
 
 			found_cluster = True
 
-			# Ok, we've found our cluster. Now we iterate companies in
-			# this group and write their prices vectors seperated by two
-			# blank lines to one file (used as input for gnuplot).
-
-			company_name = clusters_file.readline().strip()
-			while not company_name.isdigit() and company_name != "":
-
+			if average:
+				# We will now average price vectors from all
+				# companies in this group.
+				company_name = clusters_file.readline().strip()
 				vec = utils.make_prices_vec_by_company(data, company_name)
+				company_number = 1
+				company_name = clusters_file.readline().strip()
+				while not company_name.isdigit() and company_name != "":
+					vec2 = utils.make_prices_vec_by_company(data, company_name)
+					company_number += 1
+					vec = [x+y for x,y in zip(vec,vec2)]
+					company_name = clusters_file.readline().strip()
+				vec = [ (x/company_number) for x in vec ]
 				map(lambda p: plot_data_tmpfile.write(str(p) + "\n"), vec)
 				plot_data_tmpfile.write("\n\n")
+
+			else:
+				# Ok, we've found our cluster. Now we iterate companies in
+				# this group and write their prices vectors seperated by two
+				# blank lines to one file (used as input for gnuplot).
 				company_name = clusters_file.readline().strip()
+				while not company_name.isdigit() and company_name != "":
+
+					vec = utils.make_prices_vec_by_company(data, company_name)
+					map(lambda p: plot_data_tmpfile.write(str(p) + "\n"), vec)
+					plot_data_tmpfile.write("\n\n")
+					company_name = clusters_file.readline().strip()
 
 			# Great, we're done, we wanted data for only one cluster,
 			# so break here.
-
 			break
 
 		line = clusters_file.readline().strip()
@@ -74,9 +89,11 @@ def plot_single_cluster(clusters_file_path, cluster_number):
 
 if __name__ == "__main__":
 
-	if len(sys.argv) != 3:
+	if len(sys.argv) < 3:
 		print "Usage: python plot_group.py <clusters file> <cluster number>"
-		print "Usage: python plot_group.py <clusters file> all"
+		print "       python plot_group.py <clusters file> <cluster number> average"
+		print "       python plot_group.py <clusters file> all"
+		print "       python plot_group.py <clusters file> all average"
 		sys.exit(1)
 	
 
@@ -84,6 +101,7 @@ if __name__ == "__main__":
 
 	err_msg = ""
 	all_clusters = False
+	average_plot = False
 
 	try:
 		clusters_file_path = sys.argv[1]
@@ -93,6 +111,8 @@ if __name__ == "__main__":
 			all_clusters = True
 		else:
 			cluster_number = int(sys.argv[2])
+		if len(sys.argv)>3 and sys.argv[3]=="average":
+			average_plot = True
 	except ValueError:	
 		err_msg = "error: wrong cluster number"
 	except IOError:
@@ -113,10 +133,10 @@ if __name__ == "__main__":
 	if all_clusters:
 		cluster_number = detect_cluster_number(clusters_file_path)
 		for i in range(cluster_number):
-			_, plot_data = plot_single_cluster(clusters_file_path, i)
+			_, plot_data = plot_single_cluster(clusters_file_path, i, average_plot)
 			plot_tmpfiles.append(plot_data)
 	else:
-		found_cluster, plot_data_tmpfile_path = plot_single_cluster(clusters_file_path, cluster_number)
+		found_cluster, plot_data_tmpfile_path = plot_single_cluster(clusters_file_path, cluster_number, average_plot)
 	
 	if found_cluster:
 
