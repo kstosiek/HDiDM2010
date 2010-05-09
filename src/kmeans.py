@@ -21,7 +21,7 @@ if __name__ == "__main__":
 	number_of_clusters = 10
 	number_of_iters = 100
 	dist_measure = 'e'
-	treat_data_differentially = True
+	treat_data_differentially = False
 
 	for option, arg in opts:
 		if option in ("-h", "--help"):
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 			print "  -c, --clusters-num <num>   (default: 10)"
 			print "  -i, --iters-num <num>      (default: 100)"
 			print "  -d, --distance <char>      (default: e)"
-			print "  -D, --differential         (default: true)"
+			print "  -D, --differential         (default: false)"
 			sys.exit(1)
 		elif option in ("-o", "--output"):
 			output_file_path = arg
