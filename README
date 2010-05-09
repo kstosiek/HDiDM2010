@@ -5,3 +5,6 @@ python kmeans.py --help
 python kmeans.py --output output_kmeans --clusters-num 20 -i 100
 python plot_group.py output_kmeans 1
 python plot_group.py output_kmeans 8
+python plot_group.py output_kmeans 2 average
+python plot_group.py output_kmeans all
+python plot_group.py output_kmeans all average
