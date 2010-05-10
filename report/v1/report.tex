@@ -79,8 +79,14 @@
 
 \frame{
  \frametitle{Aktualne osiągnięcia}
+ Ilość iteracji: 100;
+ Ilość grup: 5, 10, 20;
+ Miara odległości: euklidesowa.
  \begin{itemize}
- \item Uzupełnić.
+ \item Uruchomienie k-means dla parametru k=20 daje coraz rozsądniejszy podział na grupy spółek zachowujących się podobnie (ca. 10 grup spółek ma sens)
+ \item Uruchomienie k-means dla wektorów cen daje bardzo liczne grupy, ale spółki zachowują się podobnie w obrębie grup;
+ \item Uruchomienie k-means dla wektorów różnic cen daje w zasadzie jedną bardzo liczną grupę spółek, co uniemożliwia sensowną analizę;
+ \item W obydwu przypadkach przynajmniej połowa otrzymanych grup to grupy zawierające niewielką ilość spółek (1,2,3).
  \end{itemize}
 }
 
