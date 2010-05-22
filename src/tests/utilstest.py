@@ -15,6 +15,22 @@ class UtilityFunctions(unittest.TestCase):
 		self.data1 = utils.parse_data(self.test_file_path1)
 		self.data2 = utils.parse_data(self.test_file_path2)
 
+        def testWeeklyCompression(self):
+		"""Testing whether weekly compression works"""
+		test_data = [
+			["Company1", { 20091101: 1, 20091102: 2, 20091103: 3, 20091104: 4, 20091105: 5}],
+			["Company2", { 20091101: 1, 20091102: 1, 20091103: 1, 20091104: 1, 20091105: 1}]
+		]
+
+		expected_result = [
+			["Company1", { 20091101: 3}],
+			["Company2", { 20091101: 1}]
+		]
+
+	        
+		actual_result = utils.compress_data_weekly(test_data)
+		self.assertEqual(actual_result, expected_result)
+
 	def testParsingProperData(self):
 		"""Parsing proper data."""
 

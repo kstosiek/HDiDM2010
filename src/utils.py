@@ -22,6 +22,39 @@ def parse_data(file_path):
 	
 	return output
 
+def compress_data_weekly(parsed_data):
+	output = []
+	for company_data in parsed_data:
+		company_name = company_data[0]
+		company_prices_daily = company_data[1]
+		company_prices_weekly = { }
+		dates_list = company_data[1].keys()
+		dates_list.sort()
+		
+		idx = 0
+		total_dates = len(dates_list)
+		while idx <  total_dates:
+			date1 = dates_list[idx]
+			date2 = dates_list[idx + 1]
+			date3 = dates_list[idx + 2]
+			date4 = dates_list[idx + 3]
+			date5 = dates_list[idx + 4]
+			
+			averagePriceOverTheWeek = ( company_prices_daily[date1]
+				+ company_prices_daily[date2]
+				+ company_prices_daily[date3]
+				+ company_prices_daily[date4]
+				+ company_prices_daily[date5]
+				) / 5
+	
+			company_prices_weekly[date1] = averagePriceOverTheWeek
+					
+			idx += 5
+		output.append([company_name, company_prices_weekly])
+	return output 
+			
+
+
 def make_prices_vec_by_company(data, company_name):
 	"""Get prices vector for concrete company. Oldest records are at the
 	begining of vector."""
