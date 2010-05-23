@@ -63,12 +63,13 @@ if __name__ == "__main__":
 	treat_data_differentially = False
 	compress_to_weekly_data = False
 
-	# Different events can be imported here to be matched agains
+	# Different events can be imported here to be matched against
 	# prices on the plot.
-        import_catastrophic_events = False
-        import_political_events = False
-        import_economical_events = False
-        import_other_events = False
+
+	import_catastrophic_events = False
+	import_political_events = False
+	import_economical_events = False
+	import_other_events = False
 
 	# indicates whether the data should be trimmed to nearest dates
 	# surrounding imported events and - if so - tells what is the size 
@@ -150,9 +151,10 @@ if __name__ == "__main__":
 	except IOError, err:
 		sys.exit(err)
 
-        # Import requested events.
+	# Import requested events.
  	# TODO(karol): this may have to be moved from here to the plotting
 	# file.
+
 	try:
         	events = { }
         	if import_catastrophic_events:
@@ -174,7 +176,7 @@ if __name__ == "__main__":
 	except IOError, err:
 		sys.exit(err)
 
-        # TODO(patryk): print events on the plot.
+	# TODO(patryk): plot events.
 
 	# Preprocessing phase.
 
@@ -183,7 +185,6 @@ if __name__ == "__main__":
 
 	if trimming_range > 0:
 		data = eventutils.trim_data_to_events(data, events, trimming_range)
-	print data
 
 	input_vecs = []
 	if treat_data_differentially:
