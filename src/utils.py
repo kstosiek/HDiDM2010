@@ -51,9 +51,7 @@ def compress_data_weekly(parsed_data):
 					
 			idx += 5
 		output.append([company_name, company_prices_weekly])
-	return output 
-			
-
+	return output 			
 
 def make_prices_vec_by_company(data, company_name):
 	"""Get prices vector for concrete company. Oldest records are at the
@@ -118,3 +116,26 @@ def make_groups_from_labels(labels, data):
 		idx = idx + 1
 	
 	return output
+
+def import_events(event_file_name):
+        def get_category_name(file):
+                return file.readline().rstrip('\n')
+
+        def get_events(file):
+                events = [ ]
+                for line in file:
+                        start_date, end_date, description = line.split(';')
+                        events.append((
+				int(start_date),
+				int(end_date),
+				description.rstrip('\n')
+			))
+                return events
+
+        file = open(event_file_name, 'r')
+        category = get_category_name(file)
+        events = get_events(file)
+        file.close()
+
+        return (category, events)
+
