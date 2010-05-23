@@ -1,0 +1,9 @@
+20090413;20090413;Pożar w Kamieniu Pomorskim
+20090918;20090918;Wybuch w kopalni Wujek-Śląsk
+20091014;20091018;Październikowy atak zimy - 4,5tys. gospodarstw bez prądu
+20090217;20090217;Rozbija się wojskowy Mi-2
+20090227;20090227;Katastrofa śmigłowca Mi-24
+20090624;20090626;Podtopienia i powodzie na południu i częściowym zachodzie Polski
+20090723;20090723;Silne burze i nawałnice w Polsce
+20090823;20090823;Podtopienia w Małopolsce
+20090830;20090830;Katastrofa białoruskiegu Su-27 na pokazach w Radomiu

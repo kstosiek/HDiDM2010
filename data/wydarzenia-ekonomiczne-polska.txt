@@ -1,0 +1,7 @@
+20090212;20090212;Ogłoszenie światowego kryzysu finansowego
+20090218;20090218;Średni kurs PLN osiąga 4,90zł za 1 EUR
+20090311;20090311;Ogłoszenie ministra finansów, ze wzrost gospodarczy w Polsce będzie niższy niż założenia rządowe, ale wyższy niż szacunki pesymistyczne
+20090504;20090504;Ogłoszenie przez KE prognozy spadku PKB w Polsce w wysokości 1,4%
+20090529;20090529;Ogłoszenie przez Eurostat wzrostu PKB w Polsce o 1,9%
+20090717;20090717;Nowelizacja budżetu. Zwiekszenie deficytu budżetowego do 27 mld. PLN - prognoza wzrostu PKB na poziomie 0.2%
+20090828;20090828;Ogłoszenie przez GUS wzrostu PKB na poziomie 1,1%
