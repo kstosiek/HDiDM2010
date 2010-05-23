@@ -80,6 +80,13 @@ class UtilityFunctions(unittest.TestCase):
 		groups = utils.make_groups_from_labels(labels3, self.data2)
 		self.assertEqual(groups, {0: ["A1"], 1: ["A2"], 2: ["A3"],
 				3: ["A4"], 4: ["A5"], 5: ["A6"]})
+
+		# Labels which are 2D points.
+
+		labels4 = [[0, 0], [0, 0], [0, 1], [0, 0], [2, 2], [0, 1]]
+		groups = utils.make_groups_from_labels(labels4, self.data2, True)
+		self.assertEqual(groups, {(0, 0): ["A1", "A2", "A4"], 
+				(0, 1): ["A3", "A6"], (2, 2): ["A5"]})
 	
 	def testMakePricesVecByCompany(self):
 		"""Obtaining prices vector by company name."""

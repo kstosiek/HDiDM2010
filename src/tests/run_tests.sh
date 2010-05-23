@@ -7,5 +7,6 @@ export PYTHONPATH="../"
 
 for test_file in *.py;
 do
+	echo "Test file: "$test_file
 	python $test_file
 done;

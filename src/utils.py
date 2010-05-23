@@ -102,13 +102,24 @@ def make_prices_diffs_vecs(data):
 	
 	return output
 
-def make_groups_from_labels(labels, data):
+def make_groups_from_labels(labels, data, labels_are_2D_points = False):
 	"""Make list of clusters based on computed labels."""
 
 	output = {}
 	idx = 0
-		
-	for label in labels:
+
+	if labels_are_2D_points:
+		new_labels = []
+		for label in labels:
+
+			# We have to change lists [x, y] into pairs (x, y),
+			# because lists are unhashable.
+
+			new_labels.append((label[0], label[1]))
+	else:
+		new_labels = labels
+			
+	for label in new_labels:
 		if label not in output:
 			output[label] = []
 
@@ -116,4 +127,3 @@ def make_groups_from_labels(labels, data):
 		idx = idx + 1
 	
 	return output
-
