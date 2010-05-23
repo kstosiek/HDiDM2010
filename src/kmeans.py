@@ -8,9 +8,9 @@ if __name__ == "__main__":
 	# Parse command line arguments.
 
 	try:
-		opts, args = getopt.getopt(sys.argv[1:], "hc:o:i:d:Dw",
+		opts, args = getopt.getopt(sys.argv[1:], "hc:o:i:d:Dwe:",
 				["help", "output=", "clusters-num=", "iters-num=",
-				 "dist=","differential", "weekly-data"])
+				 "dist=","differential", "weekly-data", "events"])
 	except getopt.GetoptError, err:
 		print str(err)
 		sys.exit(2)
@@ -23,6 +23,10 @@ if __name__ == "__main__":
 	dist_measure = 'e'
 	treat_data_differentially = False
         compress_to_weekly_data = False
+	import_catastrophic_events = False
+	import_political_events = False
+	import_economical_events = False
+	import_other_events = False
 
 	for option, arg in opts:
 		if option in ("-h", "--help"):
@@ -34,6 +38,8 @@ if __name__ == "__main__":
 			print "  -d, --distance <char>      (default: e)"
 			print "  -D, --differential         (default: false)"
 			print "  -w, --weekly-data          (default: false)"
+			print "  -e, --events               (default: <none>; possible values: ceop)"
+
 			sys.exit(1)
 		elif option in ("-o", "--output"):
 			output_file_path = arg
@@ -47,6 +53,16 @@ if __name__ == "__main__":
 			treat_data_differentially = True
 		elif option in ("-w", "--weekly-data"):
 			compress_to_weekly_data = True                        
+		elif option in ("-e", "--events"):
+			for value in arg:
+				if value == 'c':
+					import_catastrophic_events = True
+				elif value == 'e':
+					import_economical_events = True
+				elif value == 'o':
+					import_other_events = True
+				elif value == 'p':
+					import_political_events = True
 
 	print "Number of clusters is", number_of_clusters
 	print "Output file is", output_file_path
@@ -54,6 +70,17 @@ if __name__ == "__main__":
 	print "Distance measure is", dist_measure
 	print "Data treated as differential:", treat_data_differentially
 	print "Data compressed to weekly data:", compress_to_weekly_data
+	print "Events included:"
+	if not (import_catastrophic_events 
+		or import_economical_events
+		or import_other_events
+		or import_political_events):
+		print "\tNone"
+	else:
+		if import_catastrophic_events: print "\t -catastrophic"
+		if import_economical_events: print "\t -economical"
+		if import_other_events: print "\t -other"
+		if import_political_events: print "\t -political" 
 
 	# Prepare data. I'm not giving possibilty of defining
 	# different input data file via command line, I think 
@@ -68,6 +95,27 @@ if __name__ == "__main__":
 		input_vecs = utils.make_prices_diffs_vecs(data)
 	else:
 		input_vecs = utils.make_prices_vecs(data)
+
+	# Import requested events.
+	events = { }
+	if import_catastrophic_events: 
+		catastrophic_events = utils.import_events(
+			"../data/wydarzenia-katastrofy-polska.txt")
+		events[catastrophic_events[0]] = catastrophic_events[1]		
+	if import_economical_events:
+		economical_events = utils.import_events(
+			"../data/wydarzenia-ekonomiczne-polska.txt")
+		events[economical_events[0]] = economical_events[1]
+	if import_other_events:
+		other_events = utils.import_events(
+			"../data/wydarzenia-inne-polska.txt")
+		events[other_events[0]] = other_events[1]
+	if import_political_events:
+		political_events = utils.import_events(
+			"../data/wydarzenia-polityczne-polska.txt")
+		events[political_events[0]] = political_events[1]
+
+	# TODO(patryk): print events on the plot.
 
 	# Run K-means.
 
