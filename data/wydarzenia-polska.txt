@@ -12,7 +12,7 @@
 20091013;20091014;Zmiana na stanowisku szefa CBA;polityczne;
 20090908;20091002;Wakat na stanowisku szefa ZUS;polityczne;
 20091001;20091001;Ujawnienie afery hazardowej;polityczne;
-20091007;20091007;Oddanie się do dyspozycji premiera ministrów MSWiA, MS, sekretarza stanu w MG i rzecznika prasowego rządu;polityczne
+20091007;20091007;Oddanie się do dyspozycji premiera ministrów MSWiA, MS, sekretarza stanu w MG i rzecznika prasowego rządu;polityczne;
 20090308;20090308;Śmierć prof. Zbigniewa Religi;inne;
 20090413;20090413;Pożar w Kamieniu Pomorskim;katastrofy;
 20090714;20090714;Powołanie Jerzego Buzka na przewodniczącego Parlamentu Europejskiego;polityczne;
@@ -25,7 +25,7 @@
 20090910;20090910;Afera korupcyjna w ZUS;polityczne;
 20090923;20090925;Kongres Kultury Polskiej w Krakowie;inne;
 20091116;20091116;Dwa lata rządu premiera D. Tuska;polityczne;
-20091014;20091018;Październikowy atak zimy; 4,5tys. gospodarstw bez prądu;katastrofy;
+20091014;20091018;Październikowy atak zimy - 4,5tys. gospodarstw bez prądu;katastrofy;
 20090917;20090917;Opracowanie przez USA nowego planu bezpieczeństwa bez tarczy antyrakietowej w Polsce;polityczne;
 20091127;20091127;Janusz Lewandowski zostaje unijnym komisarzem ds. budżetu;polityczne;
 20091219;20091219;Zmiana na stanowisku Prymasa Polski;polityczne;
@@ -43,7 +43,7 @@
 20090529;20090529;Ogłoszenie przez Eurostat wzrostu PKB w Polsce o 1,9%;ekonomiczne;
 20090624;20090626;Podtopienia i powodzie na południu i częściowym zachodzie Polski;katastrofy;
 20090717;20090717;Zawetowanie przez Prezydenta RP ustawy medialnej;polityczne;
-20090717;20090717;Nowelizacja budżetu. Zwiekszenie deficytu budżetowego do 27 mld. PLN; prognoza wzrostu PKB na poziomie 0.2%;ekonomiczne;
+20090717;20090717;Nowelizacja budżetu. Zwiekszenie deficytu budżetowego do 27 mld. PLN - prognoza wzrostu PKB na poziomie 0.2%;ekonomiczne;
 20090723;20090723;Silne burze i nawałnice w Polsce;katastrofy;
 20090730;20090730;Podpisanie przez Prezydenta RP kluczowej ustawy z pakietu antykryzysowego;polityczne;
 20090823;20090823;Podtopienia w Małopolsce;katastrofy;
@@ -52,4 +52,4 @@
 20091009;20091009;Śmierć 2 polskich żołnierzy w Afganistyanie;inne;
 20091010;20091010;Podpisanie przez Prezydenta RP Traktatu Lizbońskiego;polityczne;
 20091023;20091023;Manifestacje w Poznianiu;polityczne;
-20091221;20091221;Ogłoszenie przez Andrzeja Olechowskiego swojej kandydatury na urząd prezydenta RP;politycze;
+20091221;20091221;Ogłoszenie przez Andrzeja Olechowskiego swojej kandydatury na urząd prezydenta RP;polityczne;
