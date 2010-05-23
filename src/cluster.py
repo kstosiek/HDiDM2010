@@ -13,7 +13,7 @@ def print_usage_and_exit():
 	print "  -m, --method <char>      	(default: a)"
 	print "  -D, --differential         (default: false)"
 	print "  -w, --weekly-data          (default: false)"
-        print "  -e, --events               (default: <none>; possible values: ceop)"
+	print "  -e, --events               (default: <none>; possible values: ceop)"
  	print "  --kmeans          			(default: true)"
 	print "  --hierarchical          	(default: false)"
 	print "  --selforgmaps          	(default: false)"
@@ -60,12 +60,13 @@ if __name__ == "__main__":
 	treat_data_differentially = False
 	compress_to_weekly_data = False
 
-	# Different events can be imported here to be matched agains
+	# Different events can be imported here to be matched against
 	# prices on the plot.
-        import_catastrophic_events = False
-        import_political_events = False
-        import_economical_events = False
-        import_other_events = False
+
+	import_catastrophic_events = False
+	import_political_events = False
+	import_economical_events = False
+	import_other_events = False
 
 	for option, arg in opts:
 		if option in ("-h", "--help"):
@@ -91,15 +92,15 @@ if __name__ == "__main__":
 		elif option in ("--selforgmaps"):
 			algorithm_type = ClusterAlg.SELFORGMAPS
    		elif option in ("-e", "--events"):
-                        for value in arg:
-                                if value == 'c':
-                                        import_catastrophic_events = True
-                                elif value == 'e':
-                                        import_economical_events = True
-                                elif value == 'o':
-                                        import_other_events = True
-                                elif value == 'p':
-                                        import_political_events = True
+			for value in arg:
+				if value == 'c':
+					import_catastrophic_events = True
+				elif value == 'e':
+					import_economical_events = True
+				elif value == 'o':
+					import_other_events = True
+				elif value == 'p':
+					import_political_events = True
 
 	print "Number of clusters:", number_of_clusters
 	print "Output file:", output_file_path
@@ -108,17 +109,6 @@ if __name__ == "__main__":
 	print "Distance method:", dist_method
 	print "Data treated as differential:", treat_data_differentially
 	print "Data compressed to weekly data:", compress_to_weekly_data
-        print "Events included:"
-        if not (import_catastrophic_events
-                or import_economical_events
-                or import_other_events
-                or import_political_events):
-                print "\tNone"
-        else:
-                if import_catastrophic_events: print "\t -catastrophic"
-                if import_economical_events: print "\t -economical"
-                if import_other_events: print "\t -other"
-                if import_political_events: print "\t -political"
 
 	print "Algorithm type:",
 	if algorithm_type == ClusterAlg.KMEANS:
@@ -128,6 +118,18 @@ if __name__ == "__main__":
 	elif algorithm_type == ClusterAlg.SELFORGMAPS:
 		print "selforgmaps"
 
+	print "Events included:"
+	if not (import_catastrophic_events
+			or import_economical_events
+			or import_other_events
+			or import_political_events):
+		print "\tNone"
+	else:
+		if import_catastrophic_events: print "\t -catastrophic"
+		if import_economical_events: print "\t -economical"
+		if import_other_events: print "\t -other"
+		if import_political_events: print "\t -political"
+
 	# Parse input data.
 
 	try:
@@ -135,32 +137,32 @@ if __name__ == "__main__":
 	except IOError, err:
 		sys.exit(err)
 
-        # Import requested events.
+	# Import requested events.
  	# TODO(karol): this may have to be moved from here to the plotting
 	# file.
+
 	try:
-        	events = { }
-        	if import_catastrophic_events:
-                	catastrophic_events = utils.import_events(
-                        	"../data/wydarzenia-katastrofy-polska.txt")
-               		events[catastrophic_events[0]] = catastrophic_events[1]
-	        if import_economical_events:
-        	        economical_events = utils.import_events(
-                	        "../data/wydarzenia-ekonomiczne-polska.txt")
-	                events[economical_events[0]] = economical_events[1]
-        	if import_other_events:
-                	other_events = utils.import_events(
-                        	"../data/wydarzenia-inne-polska.txt")
-	                events[other_events[0]] = other_events[1]
-        	if import_political_events:
-                	political_events = utils.import_events(
-                        	"../data/wydarzenia-polityczne-polska.txt")
-	                events[political_events[0]] = political_events[1]
+		events = { }
+		if import_catastrophic_events:
+			catastrophic_events = utils.import_events(
+					"../data/wydarzenia-katastrofy-polska.txt")
+			events[catastrophic_events[0]] = catastrophic_events[1]
+		if import_economical_events:
+			economical_events = utils.import_events(
+					"../data/wydarzenia-ekonomiczne-polska.txt")
+			events[economical_events[0]] = economical_events[1]
+		if import_other_events:
+			other_events = utils.import_events(
+					"../data/wydarzenia-inne-polska.txt")
+			events[other_events[0]] = other_events[1]
+		if import_political_events:
+			political_events = utils.import_events(
+					"../data/wydarzenia-polityczne-polska.txt")
+			events[political_events[0]] = political_events[1]
 	except IOError, err:
 		sys.exit(err)
 
-        # TODO(patryk): print events on the plot.
-
+	# TODO(patryk): print events on the plot.
 
 	# Preprocessing phase.
 
