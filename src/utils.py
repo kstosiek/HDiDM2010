@@ -137,5 +137,48 @@ def import_events(event_file_name):
         events = get_events(file)
         file.close()
 
-        return (category, events)
+def trim_data_to_events(data, events, range):
+	def collect_dates(data):
+		# We assume that dates are the same for each compay.
+		company, prices_by_date = data[0]
+		return prices_by_date.keys()
+		
+	def collect_event_dates(events):
+		pass
+
+	def expand_by_range(event_dates, range):
+		pass
+
+	def trim_events_to_data_range(event_dates, all_dates):
+		pass
+
+	def trim_data_to_event_dates(data, event_dates):
+		pass
+
+	all_dates = collect_dates(data)
+	print len(all_dates)
+
+	#event_dates = collect_event_dates(events)
+	#event_dates = expand_by_range(event_dates, range)
+	#event_dates = trim_events_to_data_range(event_dates, all_dates)
+	
+        #return trim_data_to_event_dates(data, event_dates)
+			
+
+
+if __name__ == "__main__":
+	data = parse_data("../data/notowania.txt")
+	events = import_events("../data/wydarzenia-inne-polska.txt")
+	trim_data_to_events(data, events, 5)
+
+
+
+
+
+
+
+
+
+
+
 
