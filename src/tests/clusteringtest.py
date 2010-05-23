@@ -26,10 +26,12 @@ class Clustering(unittest.TestCase):
 		   vectors works."""
 
 		prices_diffs_vecs = utils.make_prices_diffs_vecs(self.data1)		
-		labels, wcss, n = Pycluster.kcluster(prices_diffs_vecs, 3)
+		labels, wcss, n = Pycluster.kcluster(prices_diffs_vecs, 3, npass=100)
 		clusters = utils.make_groups_from_labels(labels, self.data1)
 
-		# The result should be sth like this modulo group numbers.
+		# The result should be sth like this modulo group numbers. Probability
+		# that this isn't like this with npass=100 is (I think) very low! But
+		# it can happen that this grouping will be different.
 
 		suggested_clusters = {0: ['E'], 1: ['A', 'D'], 2: ['B', 'C']}
 
