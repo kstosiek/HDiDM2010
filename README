@@ -1,8 +1,23 @@
-Sample usage as for now:
-
 cd src
-python kmeans.py --help
-python kmeans.py --output output_kmeans --clusters-num 20 -i 100
+python cluster.py --help
+
+Sample usage:
+
+1. K-means 
+
+python cluster.py ../data/notowania.txt --kmeans -o out -D --weekly-data -i 300
+python cluster.py ../data/notowania.txt -o out -D --weekly-data -i 300
+
+2. Hierarchical clustering.
+
+python cluster.py ../data/notowania.txt --hierarchical -o out -D --weekly-data -i 300
+
+3. Self-organizing maps.
+
+python cluster.py ../data/notowania.txt --selforgmaps -D -i 5000 -x 3 -y 3
+
+4. Plotting stock graphs.
+
 python plot_group.py output_kmeans 1
 python plot_group.py output_kmeans 8
 python plot_group.py output_kmeans 2 average

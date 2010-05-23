@@ -1,13 +1,6 @@
 - Wykresy w gnuplocie są póki co ubogie, wypadałoby dopisać
   różne kolorki dla różnych wykresów albo chociaż podpisywanie
   wykresów nazwami spółek (to nie powinno być trudne).
-- Trzeba dopisać ten drugi algorytm podziału, samoorganizujące
-  się sieci Kohonena, aczkolwiek wydaje mi się, że na połówkę
-  projektu możnaby skupić się na K-means, coby sobie coś do
-  implementacji na później zostawić. Sam nie wiem.
-- Interpretacja wyników dla podziału zrobionego przez K-means.
-  Nie wiem jaka liczba grup jest tu odpowiednim parametrem do K-means.
-  Wnioski najlepiej odrazu spisywać w dokumentacji.
 
 PREZENTACJA
 - Reprezentanci grup na jednym wykresie (Patryk).
