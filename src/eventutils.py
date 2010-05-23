@@ -67,12 +67,11 @@ def trim_data_to_events(data, events, range):
 
                 expansion_result = []
                 for start_date, end_date in event_dates:
-                        expansion_result.extend(expand_left(start_date, range, possible_dates))
-                        expansion_result.extend(expand_right(end_date, range, possible_dates))
+                        expansion_result.extend(
+				expand_left(start_date, range, possible_dates))
+                        expansion_result.extend(
+				expand_right(end_date, range, possible_dates))
                 return set(expansion_result)
-
-
-
 
         def trim_data_to_event_dates(data, event_dates):
                 def trim_prices_by_date(prices_by_date, event_dates):
@@ -86,8 +85,7 @@ def trim_data_to_events(data, events, range):
                         trimmed_data.append([
                                 company,
                                 trim_prices_by_date(prices_by_date, event_dates)
-                        ]
-)
+                        ])
                 return trimmed_data
 
 
@@ -98,15 +96,4 @@ def trim_data_to_events(data, events, range):
         event_dates = expand_by_range(event_dates, range, all_dates)
 
         return trim_data_to_event_dates(data, event_dates)
-
-
-if __name__ == "__main__":
-        data = parse_data("../data/notowania.txt")
-        events = import_events("../data/wydarzenia-inne-polska.txt")
-        event_map = { events[0]: events[1] }
-        for company, prices_by_date in trim_data_to_events(data, event_map, 5):
-                print company
-                for date in prices_by_date.keys():
-                        print date, ': ', prices_by_date[date]
-        trim_data_to_events.trim_data_to_event_dates(None, None)
 
