@@ -117,25 +117,3 @@ def make_groups_from_labels(labels, data):
 	
 	return output
 
-def import_events(event_file_name):
-        def get_category_name(file):
-                return file.readline().rstrip('\n')
-
-        def get_events(file):
-                events = [ ]
-                for line in file:
-                        start_date, end_date, description = line.split(';')
-                        events.append((
-				int(start_date),
-				int(end_date),
-				description.rstrip('\n')
-			))
-                return events
-
-        file = open(event_file_name, 'r')
-        category = get_category_name(file)
-        events = get_events(file)
-        file.close()
-
-        return (category, events)
-

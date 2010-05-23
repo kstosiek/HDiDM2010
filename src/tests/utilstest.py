@@ -99,16 +99,6 @@ class UtilityFunctions(unittest.TestCase):
 		diff_vecs = utils.make_prices_diffs_vecs(data3)
 		self.assertEqual(diff_vecs, [[0], [0]])
 
-	def testEventImport(self):
-		expected_result = ('category1', [ 
-			(20090308, 20090308, 'event1'),
-			(20090923, 20090925, 'event2'),
-                        (20090111, 20090111, 'event3')
-                ])
-
-                actual_result = utils.import_events("data/eventdata.txt")
-		self.assertEqual(actual_result, expected_result)
-
 
 if __name__ == "__main__":
 	unittest.main()
