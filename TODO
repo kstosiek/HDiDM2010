@@ -8,12 +8,6 @@
 - Interpretacja wyników dla podziału zrobionego przez K-means.
   Nie wiem jaka liczba grup jest tu odpowiednim parametrem do K-means.
   Wnioski najlepiej odrazu spisywać w dokumentacji.
-- Aktualnie mamy 300 dni notowań (czyli jakieś 1.5 roku). Można obciąć
-  te wektory do ujęcia tygodniowego/miesięcznego i odpalić na tak skróconych
-  wektorach algorytmy grupowania. Porównać wyniki.
-- Szczerze mówiąc to nie wiem co dalej, trzeba by mały research zrobić
-  co jeszcze będzie trzeba dodać, żeby uznać ten projekt za skończony.
-- Czy kod ma być bardziej object-oriented?
 
 PREZENTACJA
 - Reprezentanci grup na jednym wykresie (Patryk).
