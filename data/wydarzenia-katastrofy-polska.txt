@@ -1,3 +1,4 @@
+katastrofy
 20090413;20090413;Pożar w Kamieniu Pomorskim
 20090918;20090918;Wybuch w kopalni Wujek-Śląsk
 20091014;20091018;Październikowy atak zimy - 4,5tys. gospodarstw bez prądu

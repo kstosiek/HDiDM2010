@@ -1,3 +1,4 @@
+ekonomiczne
 20090212;20090212;Ogłoszenie światowego kryzysu finansowego
 20090218;20090218;Średni kurs PLN osiąga 4,90zł za 1 EUR
 20090311;20090311;Ogłoszenie ministra finansów, ze wzrost gospodarczy w Polsce będzie niższy niż założenia rządowe, ale wyższy niż szacunki pesymistyczne
