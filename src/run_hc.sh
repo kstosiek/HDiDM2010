@@ -2,7 +2,10 @@
 
 for clusters_num in 5 10 15 20
 do
-  output_file="output_hierarchical_"$clusters_num
+  mkdir -p ../report/v2/hierarchical/
+  rm -rf ../report/v2/hierarchical/*
+  
+  output_file="../report/v2/hierarchical/output_hierarchical_"$clusters_num
   echo "====================================================="
   echo "RUNNING HIERARCHICAL CLUSTERING FOR ${clusters_num} CLUSTERS"
   echo ""
