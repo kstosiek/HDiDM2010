@@ -3,7 +3,7 @@ import utils
 import sys
 import os
 
-def generate_gnuplot_command(files_list):
+def generate_gnuplot_command(files_list, output_file):
 	if not files_list:
 		return ''
 	colours_str = """
@@ -13,7 +13,7 @@ def generate_gnuplot_command(files_list):
 	colours = colours_str.split()
 	plots_colours = zip(files_list, colours)
 	plots = [ '"%s" lt rgb "%s" with lines'%pair for pair in plots_colours]
-	return 'plot %s\n' % ', '.join(plots)
+	return 'set term gif \n set output "' + output_file + '.gif"\n plot %s\n' % ', '.join(plots)
 
 def detect_cluster_number(clusters_file_path):
 	n = 0
@@ -89,11 +89,11 @@ def plot_single_cluster(clusters_file_path, cluster_number, average=False):
 
 if __name__ == "__main__":
 
-	if len(sys.argv) < 3:
-		print "Usage: python plot_group.py <clusters file> <cluster number>"
-		print "       python plot_group.py <clusters file> <cluster number> average"
-		print "       python plot_group.py <clusters file> all"
-		print "       python plot_group.py <clusters file> all average"
+	if len(sys.argv) < 4:
+		print "Usage: python plot_group.py <clusters file> <output file> <cluster number> "
+		print "       python plot_group.py <clusters file> <output file> <cluster number> average"
+		print "       python plot_group.py <clusters file> <output file> all"
+		print "       python plot_group.py <clusters file> <output file> all average"
 		sys.exit(1)
 	
 
@@ -107,11 +107,12 @@ if __name__ == "__main__":
 		clusters_file_path = sys.argv[1]
 		clusters_file = open(clusters_file_path, "r")	
 		clusters_file.close()
-		if(sys.argv[2] == "all"):
+		output_file_path = sys.argv[2]
+		if(sys.argv[3] == "all"):
 			all_clusters = True
 		else:
-			cluster_number = int(sys.argv[2])
-		if len(sys.argv)>3 and sys.argv[3]=="average":
+			cluster_number = int(sys.argv[3])
+		if len(sys.argv)>4 and sys.argv[4]=="average":
 			average_plot = True
 	except ValueError:	
 		err_msg = "error: wrong cluster number"
@@ -144,12 +145,9 @@ if __name__ == "__main__":
 
 		gnuplot_commands_tmpfile_path = tempfile.mkstemp()[1]
 		gnuplot_commands_tmpfile = open(gnuplot_commands_tmpfile_path, "r+")
-		gnuplot_commands_tmpfile.write("plot '" + plot_data_tmpfile_path +
+		gnuplot_commands_tmpfile.write("set term gif\n set output \"" + output_file_path + ".gif\"\n plot '" + plot_data_tmpfile_path +
 				"'  with lines \n")
-		gnuplot_commands_tmpfile.write("pause mouse any")
 		gnuplot_commands_tmpfile.close()
-
-		print "Click in the plot to exit... (hit Ctrl-C if hangs)"
 
 		print gnuplot_commands_tmpfile_path
 		os.system("gnuplot " + gnuplot_commands_tmpfile_path)
@@ -159,15 +157,13 @@ if __name__ == "__main__":
 	
 		os.remove(plot_data_tmpfile_path)
 	elif all_clusters:
-		plot_cmd = generate_gnuplot_command(plot_tmpfiles)
+		plot_cmd = generate_gnuplot_command(plot_tmpfiles, output_file_path)
 		#print plot_cmd
 
 		gnuplot_commands_tmpfile_path = tempfile.mkstemp()[1]
 		gnuplot_commands_tmpfile = open(gnuplot_commands_tmpfile_path, "r+")
 		gnuplot_commands_tmpfile.write(plot_cmd)
-		gnuplot_commands_tmpfile.write("pause mouse any")
 		gnuplot_commands_tmpfile.close()
-		print "Click in the plot to exit... (hit Ctrl-C if hangs)"
 		print gnuplot_commands_tmpfile_path
 		os.system("gnuplot " + gnuplot_commands_tmpfile_path)
 		gnuplot_commands_tmpfile.close()
