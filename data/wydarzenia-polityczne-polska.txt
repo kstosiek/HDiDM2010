@@ -1,31 +1,31 @@
 polityczne
-20090306;20090306;Odwołanie p.o. Prokuratora Krajowego Jerzego Szymańskiego
-20090901;20090901;Odwołanie dyrektora Rządowego Centrum Bezpieczeństwa, Antoniego Podolskiego
-20091013;20091014;Odwołanie ministra spraw wewnętrznych i administracji, Grzegorza Schetyny i powołanie Jerzego Millera na ten urząd
-20091013;20091014;Odwołanie ministra sportu i turystyki, Mirosława Drzewieckiego, i powołanie Adama Giersza na ten urząd
-20091013;20091014;Odwołanie ministra sprawiedliwości i prokuratora generalnego, Andrzeja Czumy, i powołanie Krzysztofa Kwiatkowskiego na ten urząd
-20091116;20091116;Powołanie Piotra Gryski na stanowisko wiceprezesa Rządowego Centrum Legislacji
-20091231;20100101;Przeniesienie Mikołaja Dowgielewicza z urzędu sekretarza stanu w Urzędzie Komitetu Integracji Europejskiej i wieceprzewodniczącego Komitetu Europejskiego Rady Ministrów na urząd sekretarza stanu ds. europejskich w Ministerstwie Spraw Zagranicznych
-20091231;20100101;Przeniesienie Piotra Serafina z Urzędu Komitetu Integracji Europejskiej na stanowisko podsekretarza stanu ds. ekonomicznych w Ministerstwie Spraw Zagranicznych
-20100201;20100202;Odwołanie Macieja Nowickiego z urzędu ministra środowiska i powołanie Andrzeja Kraszewskiego na ten urząd
+20090306;20090306;Odwolanie p.o. Prokuratora Krajowego Jerzego Szymanskiego
+20090901;20090901;Odwolanie dyrektora Rzadowego Centrum Bezpieczenstwa, Antoniego Podolskiego
+20091013;20091014;Odwolanie ministra spraw wewnetrznych i administracji, Grzegorza Schetyny i powolanie Jerzego Millera na ten urzad
+20091013;20091014;Odwolanie ministra sportu i turystyki, Miroslawa Drzewieckiego, i powolanie Adama Giersza na ten urzad
+20091013;20091014;Odwolanie ministra sprawiedliwosci i prokuratora generalnego, Andrzeja Czumy, i powolanie Krzysztofa Kwiatkowskiego na ten urzad
+20091116;20091116;Powolanie Piotra Gryski na stanowisko wiceprezesa Rzadowego Centrum Legislacji
+20091231;20100101;Przeniesienie Mikolaja Dowgielewicza z urzedu sekretarza stanu w Urzedzie Komitetu Integracji Europejskiej i wieceprzewodniczacego Komitetu Europejskiego Rady Ministrow na urzad sekretarza stanu ds. europejskich w Ministerstwie Spraw Zagranicznych
+20091231;20100101;Przeniesienie Piotra Serafina z Urzedu Komitetu Integracji Europejskiej na stanowisko podsekretarza stanu ds. ekonomicznych w Ministerstwie Spraw Zagranicznych
+20100201;20100202;Odwolanie Macieja Nowickiego z urzedu ministra srodowiska i powolanie Andrzeja Kraszewskiego na ten urzad
 20100215;20100216;Zmiana sekretarza stanu w Ministerstwie Rozwoju Regionalnego
-20100218;20100218;Odwołanie Piotra Serafina ze stanowis podsekretarza stanu ds. ekonomicznych w Ministerstwie Spraw Zagranicznych i narodowego koordynatora pomocy dla programów Phare oraz środki przejściowe
+20100218;20100218;Odwolanie Piotra Serafina ze stanowis podsekretarza stanu ds. ekonomicznych w Ministerstwie Spraw Zagranicznych i narodowego koordynatora pomocy dla programow Phare oraz srodki przejsciowe
 20091013;20091014;Zmiana na stanowisku szefa CBA
 20090908;20091002;Wakat na stanowisku szefa ZUS
 20091001;20091001;Ujawnienie afery hazardowej
-20091007;20091007;Oddanie się do dyspozycji premiera ministrów MSWiA, MS, sekretarza stanu w MG i rzecznika prasowego rządu
-20090714;20090714;Powołanie Jerzego Buzka na przewodniczącego Parlamentu Europejskiego
-20090901;20090901;Angela Merkel i Władimir Putin uczestniczą w uroczystościach na Westerplatte
+20091007;20091007;Oddanie sie do dyspozycji premiera ministrow MSWiA, MS, sekretarza stanu w MG i rzecznika prasowego rzadu
+20090714;20090714;Powolanie Jerzego Buzka na przewodniczacego Parlamentu Europejskiego
+20090901;20090901;Angela Merkel i Wladimir Putin uczestnicza w uroczystosciach na Westerplatte
 20090918;20090919;Zmiany na stanowiskach kierowniczych w TVP
 20090929;20090929;W.Cimoszewicz przegrywa wybory na szefa Rady Europy
 20090910;20090910;Afera korupcyjna w ZUS
-20091116;20091116;Dwa lata rządu premiera D. Tuska
-20090917;20090917;Opracowanie przez USA nowego planu bezpieczeństwa bez tarczy antyrakietowej w Polsce
-20091127;20091127;Janusz Lewandowski zostaje unijnym komisarzem ds. budżetu
+20091116;20091116;Dwa lata rzadu premiera D. Tuska
+20090917;20090917;Opracowanie przez USA nowego planu bezpieczenstwa bez tarczy antyrakietowej w Polsce
+20091127;20091127;Janusz Lewandowski zostaje unijnym komisarzem ds. budzetu
 20091219;20091219;Zmiana na stanowisku Prymasa Polski
-20090219;20090220;Nieformalne spotkanie ministrów obrony krajów NATO w Krakowie
+20090219;20090220;Nieformalne spotkanie ministrow obrony krajow NATO w Krakowie
 20090717;20090717;Zawetowanie przez Prezydenta RP ustawy medialnej
 20090730;20090730;Podpisanie przez Prezydenta RP kluczowej ustawy z pakietu antykryzysowego
-20091010;20091010;Podpisanie przez Prezydenta RP Traktatu Lizbońskiego
+20091010;20091010;Podpisanie przez Prezydenta RP Traktatu Lizbonskiego
 20091023;20091023;Manifestacje w Poznianiu
-20091221;20091221;Ogłoszenie przez Andrzeja Olechowskiego swojej kandydatury na urząd prezydenta RP
+20091221;20091221;Ogloszenie przez Andrzeja Olechowskiego swojej kandydatury na urzad prezydenta RP

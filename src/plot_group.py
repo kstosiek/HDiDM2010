@@ -3,6 +3,36 @@ import utils
 import sys
 import os
 
+global event_file_path
+event_file_path = '../data/wydarzenia-polityczne-polska.txt'
+
+global set_xrange
+set_xrange = ''
+
+def shorten(s):
+	if len(s) > 50:
+		return s[:50]+'...'
+	return s
+
+def parse_date(s):
+	date = s[-4:]
+	month = int(date[:2])
+	day = int(date[-2:])
+	day_no = (month*30+day) * (300./365)
+	return (day_no, "%s-%s" % (month,day))
+
+def gen_labels():
+	labels = []
+	x = 10
+	for line in open(event_file_path):
+		tokens = line.split(';')
+		if(len(tokens) > 1):
+			day, date = parse_date(tokens[0])
+			labels.append("set label \" %s (%s)\" at %f,0 rotate by 45\n" % (shorten(tokens[2].strip()), date, day))
+			x += 20
+	return '\n'.join(labels)
+
+
 def generate_gnuplot_command(files_list, output_file):
 	if not files_list:
 		return ''
@@ -13,7 +43,14 @@ def generate_gnuplot_command(files_list, output_file):
 	colours = colours_str.split()
 	plots_colours = zip(files_list, colours)
 	plots = [ '"%s" lt rgb "%s" with lines'%pair for pair in plots_colours]
-	return 'set term gif \n set output "' + output_file + '.gif"\n plot %s\n' % ', '.join(plots)
+	cmd ="""
+	set term gif size 800,600
+	%s
+	%s
+	set output '%s.gif'
+	plot %s
+	""" % ( set_xrange, gen_labels(), output_file, ', '.join(plots) )
+	return cmd
 
 def detect_cluster_number(clusters_file_path):
 	n = 0
@@ -119,6 +156,18 @@ if __name__ == "__main__":
 	except IOError:
 		err_msg = "error: couldn't open file with clusters"
 	
+	for arg in sys.argv:
+		if arg.startswith('events:'):
+			event_paths = {}
+			event_paths['polityczne'] = '../data/wydarzenia-polityczne-polska.txt'
+			event_paths['katastrofy'] = '../data/wydarzenia-katastrofy-polska.txt'
+			event_paths['ekonomiczne'] = '../data/wydarzenia-ekonomiczne-polska.txt'
+			event_paths['inne'] = '../data/wydarzenia-inne-polska.txt'
+			event_file_path = event_paths[arg[7:]]
+		if arg.startswith('xrange:'):
+			if arg[7:]:
+				set_xrange = 'set xrange [%s]' % arg[7:]
+	
 	# If error message is not empty print it and exit.
 	
 	if err_msg != "":
@@ -145,8 +194,14 @@ if __name__ == "__main__":
 
 		gnuplot_commands_tmpfile_path = tempfile.mkstemp()[1]
 		gnuplot_commands_tmpfile = open(gnuplot_commands_tmpfile_path, "r+")
-		gnuplot_commands_tmpfile.write("set term gif\n set output \"" + output_file_path + ".gif\"\n plot '" + plot_data_tmpfile_path +
-				"'  with lines \n")
+		gnuplot_commands_tmpfile.write("""
+		set term gif size 800,600
+		%s
+		%s
+		set output '%s.gif'
+		plot '%s' with lines
+		""" % ( set_xrange, gen_labels(), output_file_path, plot_data_tmpfile_path))
+
 		gnuplot_commands_tmpfile.close()
 
 		print gnuplot_commands_tmpfile_path
