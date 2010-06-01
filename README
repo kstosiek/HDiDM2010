@@ -23,3 +23,13 @@ python plot_group.py output_kmeans 8
 python plot_group.py output_kmeans 2 average
 python plot_group.py output_kmeans all
 python plot_group.py output_kmeans all average
+
+5. Running kmeans in serie for different parameters with plotting to gif files
+Files are stored in /report/v2/kmeans/ directory.
+
+./run_kmeans.sh [with adjusted parameters in script source]
+
+6. Running hierarchical clustering in serie for different parameters with plotting to gif files.
+Files are stored in /report/v2/hierarchical/ directory.
+
+./run_hc.sh [with adjusted parameters in script source]

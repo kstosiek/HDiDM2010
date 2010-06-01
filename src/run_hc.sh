@@ -1,9 +1,9 @@
 #!/bin/bash
 
-for clusters_num in 5 #10 15 20  # w ten sposob sie nadpisuja!
+for clusters_num in 5 10 15 20  
 do
-  mkdir -p ../report/v2/hierarchical/
-  rm -rf ../report/v2/hierarchical/*
+  mkdir -p ../report/v2/hierarchical/$clusters_num
+  rm -rf ../report/v2/hierarchical/$clusters_num/*
   
   xrange="" # dni, np dla wykresu na dni 100..200:  xrange="100:200"
   events_type="ekonomiczne"
@@ -11,7 +11,7 @@ do
   # polityczne
   # ekonomiczne
   # inne
-  output_file="../report/v2/hierarchical/output_hierarchical_"$clusters_num
+  output_file="../report/v2/hierarchical/"$clusters_num"/output_hierarchical_"$clusters_num
   echo "====================================================="
   echo "RUNNING HIERARCHICAL CLUSTERING FOR ${clusters_num} CLUSTERS"
   echo ""

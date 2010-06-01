@@ -2,10 +2,10 @@
 
 for clusters_num in 5 10 15 20
 do
-  mkdir -p ../report/v2/kmeans
-  rm -rf ../report/v2/kmeans/*  
+  mkdir -p ../report/v2/kmeans/$clusters_num
+  rm -rf ../report/v2/kmeans/$clusters_num/*  
 
-  output_file="../report/v2/kmeans/output_kmeans_"$clusters_num
+  output_file="../report/v2/kmeans/"$clusters_num"/output_kmeans_"$clusters_num
   echo "====================================================="
   echo "RUNNING HIERARCHICAL CLUSTERING FOR ${clusters_num} CLUSTERS"
   echo ""
