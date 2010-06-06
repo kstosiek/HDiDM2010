@@ -38,3 +38,5 @@ Files are stored in /report/v2/hierarchical/ directory.
 Files are stored in /report/v2/selforgmaps/ directory.
 
 ./run_selforgmaps.sh [with adjusted parameters in script source]
+
+8. FIXME: How to handle different events in scripts?
