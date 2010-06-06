@@ -10,8 +10,8 @@ global set_xrange
 set_xrange = ''
 
 def shorten(s):
-	if len(s) > 50:
-		return s[:50]+'...'
+	if len(s) > 40:
+		return s[:40]+'...'
 	return s
 
 def parse_date(s):
@@ -21,21 +21,39 @@ def parse_date(s):
 	day_no = (month*30+day) * (300./365)
 	return (day_no, "%s-%s" % (month,day))
 
-def gen_labels():
+def gen_labels(include_events):
+
+	if not include_events:
+		return ""
+
 	labels = []
+	days = []
 	x = 10
+
+	# Show grid.
+
+	labels.append("set grid\n")
+	labels.append("set xrange [0:]\n")
+	labels.append("set yrange [0:]\n")
+
+	# Don't show anything on x axis.
+
+	labels.append("set format x \"\"\n")
+
 	for line in open(event_file_path):
 		tokens = line.split(';')
 		if(len(tokens) > 1):
 			day, date = parse_date(tokens[0])
-			labels.append("set label \" %s (%s)\" at %f,0 rotate by 45\n" % (shorten(tokens[2].strip()), date, day))
+			days.append(day)
+			labels.append("set label \"   %s\" at %f,0 rotate front\n" % (shorten(tokens[2].strip()), day))
+			labels.append("set xtics add (%f)\n" % day)
 			x += 20
 	return '\n'.join(labels)
 
 
-def generate_gnuplot_command(files_list, output_file):
+def generate_gnuplot_command(files_list, output_file, include_events):
 	if not files_list:
-		return ''
+		return ""
 	colours_str = """
 	blue red gold green navyblue violet salmon
 	#87CEEB #8B008B #FFA07A #00FF00 #800000 #808000 #4169E1 #708090 
@@ -44,23 +62,24 @@ def generate_gnuplot_command(files_list, output_file):
 	plots_colours = zip(files_list, colours)
 	plots = [ '"%s" lt rgb "%s" with lines'%pair for pair in plots_colours]
 	cmd ="""
-	set term gif size 800,600
+	set term gif size 1024, 768
 	%s
 	%s
 	set output '%s.gif'
 	plot %s
-	""" % ( set_xrange, gen_labels(), output_file, ', '.join(plots) )
+	""" % ( set_xrange, gen_labels(include_events), output_file, ', '.join(plots) )
 	return cmd
 
-def detect_cluster_number(clusters_file_path):
-	n = 0
-	for line in open(clusters_file_path):
-		line = line.strip()
-		if(line.isdigit()):
-			tmp_n = int(line)
-			if tmp_n > n:
-				n = tmp_n
-	return n+1
+def detect_clusters_count(clusters_file_path):
+	'''Detect how many clusters are in clusters file.'''
+
+	def aux(acc, x):
+		if x.strip().isdigit() and int(x) > acc:
+			return int(x)
+		else:
+			return acc
+	
+	return reduce(aux, open(clusters_file_path).readlines(), 0) + 1
 
 def plot_single_cluster(clusters_file_path, cluster_number, average=False):
 	clusters_file = open(clusters_file_path, "r")	
@@ -155,9 +174,12 @@ if __name__ == "__main__":
 		err_msg = "error: wrong cluster number"
 	except IOError:
 		err_msg = "error: couldn't open file with clusters"
+
+	include_events = False
 	
 	for arg in sys.argv:
 		if arg.startswith('events:'):
+			include_events = True
 			event_paths = {}
 			event_paths['polityczne'] = '../data/wydarzenia-polityczne-polska.txt'
 			event_paths['katastrofy'] = '../data/wydarzenia-katastrofy-polska.txt'
@@ -181,8 +203,8 @@ if __name__ == "__main__":
 	found_cluster = False
 	plot_tmpfiles = []
 	if all_clusters:
-		cluster_number = detect_cluster_number(clusters_file_path)
-		for i in range(cluster_number):
+		clusters_count = detect_clusters_count(clusters_file_path)
+		for i in range(clusters_count):
 			_, plot_data = plot_single_cluster(clusters_file_path, i, average_plot)
 			plot_tmpfiles.append(plot_data)
 	else:
@@ -195,12 +217,12 @@ if __name__ == "__main__":
 		gnuplot_commands_tmpfile_path = tempfile.mkstemp()[1]
 		gnuplot_commands_tmpfile = open(gnuplot_commands_tmpfile_path, "r+")
 		gnuplot_commands_tmpfile.write("""
-		set term gif size 800,600
+		set term gif size 1024, 768
 		%s
 		%s
 		set output '%s.gif'
 		plot '%s' with lines
-		""" % ( set_xrange, gen_labels(), output_file_path, plot_data_tmpfile_path))
+		""" % ( set_xrange, gen_labels(include_events), output_file_path, plot_data_tmpfile_path))
 
 		gnuplot_commands_tmpfile.close()
 
@@ -208,11 +230,12 @@ if __name__ == "__main__":
 		os.system("gnuplot " + gnuplot_commands_tmpfile_path)
 
 		gnuplot_commands_tmpfile.close()
-		os.remove(gnuplot_commands_tmpfile_path)
+		#os.remove(gnuplot_commands_tmpfile_path)
 	
-		os.remove(plot_data_tmpfile_path)
+		#os.remove(plot_data_tmpfile_path)
 	elif all_clusters:
-		plot_cmd = generate_gnuplot_command(plot_tmpfiles, output_file_path)
+		plot_cmd = generate_gnuplot_command(plot_tmpfiles, output_file_path,
+				include_events)
 		#print plot_cmd
 
 		gnuplot_commands_tmpfile_path = tempfile.mkstemp()[1]
@@ -222,7 +245,7 @@ if __name__ == "__main__":
 		print gnuplot_commands_tmpfile_path
 		os.system("gnuplot " + gnuplot_commands_tmpfile_path)
 		gnuplot_commands_tmpfile.close()
-		os.remove(gnuplot_commands_tmpfile_path)
+		#os.remove(gnuplot_commands_tmpfile_path)
 		for tmpfile_path in plot_tmpfiles:
 			os.remove(tmpfile_path)
 	else:
