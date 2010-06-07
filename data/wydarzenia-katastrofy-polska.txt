@@ -8,3 +8,4 @@ katastrofy
 20090723;20090723;Silne burze i nawałnice w Polsce
 20090823;20090823;Podtopienia w Małopolsce
 20090830;20090830;Katastrofa białoruskiegu Su-27 na pokazach w Radomiu
+20100410;20100410;Katastrofa w Smolensku
