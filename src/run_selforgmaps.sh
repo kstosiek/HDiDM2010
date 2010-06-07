@@ -6,7 +6,7 @@ do
   mkdir -p ../report/v2/selforgmaps/$clusters_num
   rm -rf ../report/v2/selforgmaps/$clusters_num/*  
 
-  events_type="ekonomiczne"
+  events_type="katastrofy"
 
   output_file="../report/v2/selforgmaps/"$clusters_num"/output_selforgmaps_"$clusters_num
   echo "====================================================="

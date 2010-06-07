@@ -15,10 +15,15 @@ def shorten(s):
 	return s
 
 def parse_date(s):
-	date = s[-4:]
-	month = int(date[:2])
+	date = s[-8:]
+	year = int(date[:4])
+	month = int(date[4:6])
 	day = int(date[-2:])
-	day_no = (month*30+day) * (300./365)
+	print year, "-", month, "-", day
+	if year == 2009:
+		day_no = ((month-1)*30+day) * (227./365)
+	elif year == 2010:
+		day_no = 227 + ((month-1)*30+day) * (145./365)
 	return (day_no, "%s-%s" % (month,day))
 
 def gen_labels(include_events):
@@ -38,14 +43,14 @@ def gen_labels(include_events):
 
 	# Don't show anything on x axis.
 
-	labels.append("set format x \"\"\n")
+	#labels.append("set format x \"\"\n")
 
 	for line in open(event_file_path):
 		tokens = line.split(';')
 		if(len(tokens) > 1):
 			day, date = parse_date(tokens[0])
 			days.append(day)
-			labels.append("set label \"   %s\" at %f,0 rotate front\n" % (shorten(tokens[2].strip()), day))
+			labels.append("set label \"   %s (%s)\" at %f,0 rotate front\n" % (shorten(tokens[2].strip()), date, day))
 			labels.append("set xtics add (%f)\n" % day)
 			x += 20
 	return '\n'.join(labels)
