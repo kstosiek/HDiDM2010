@@ -17,7 +17,7 @@
  }
 \author{Tomasz Kupczyk, Patryk Obara, Karol Stosiek}
 \institute{Instytut Informatyki Uniwersytetu Wrocławskiego}
-\date{11 maja 2010}
+\date{8 czerwca 2010}
 
 \begin{document}
 
@@ -44,7 +44,7 @@
   \item Dane spółek wyłącznie z GPW w Warszawie.
   \item Na GPW notowanych jest około 350 spółek.
   \item Nasze dane obejmują 186 spółek.
-  \item Okres czasu: każda ze 186 wybranych przez nas spółek była notowana w okresie od 09-02-2009 do 16-04-2010 (300 dni, bez "dziur"). 
+  \item Okres czasu: każda ze 186 wybranych przez nas spółek była notowana w okresie od 09.02.2009 do 16.04.2010 (300 dni, bez "dziur"). 
   \item Jest to najdłuższy okres, w którym każda ze 186 wybranych spółek była notowana na GPW, jaki udało nam się znaleźć.
   \item Dane pochodzą z serwisu www.bossa.pl.
 \end{itemize}
@@ -61,7 +61,47 @@
 
 \section{Metody}
 
+
 \frame{
+\frametitle{V1}
+\begin{enumerate}
+ \item {\bf Zebranie danych badawczych: notowań giełdowych wybranych spółek oraz stworzenie bazy wydarzeń historycznych.}
+  \item {\bf Zbudowanie wiarygodnego narzędzia do grupowania notowań spółek giełdowych oraz analizy wydarzeń historycznych}
+  \begin{itemize}
+    \item {\bf w oparciu o algorytm k-means;}
+    \item {\bf z możliwością tworzenia wykresów analizowanych danych;}
+    \item {\color{gray}z naniesionymi wydarzeniami historycznymi.}
+  \end{itemize}
+  \item {\bf Dobranie odpowiednich parametrów do wiarygodnej analizy otrzymanych danych;}
+  \item {\bf Zanotowanie obserwacji i podjęcie próby wyciągnięcia pierwszych wniosków;}
+  \item {\color{gray}Rozbudowa narzędzia o inne narzędzia (dawniej: o sieci Kohonena)}
+  \item {\color{gray}Ponowne dobranie parametrów do analizy otrzymanych danych;}
+  \item {\color{gray}Zanotowanie obserwacji i wyciągnięcie wniosków;}
+  \item {\color{gray}Porównanie z wynikami osiągniętymi podczas analiz opartych o wyniki algorytmu k-means.}
+\end{enumerate}
+}
+
+\frame{
+\frametitle{V2}
+\begin{enumerate}
+ \item {\color{gray} Zebranie danych badawczych: notowań giełdowych wybranych spółek oraz stworzenie bazy wydarzeń historycznych.}
+  \item {\color{gray} Zbudowanie wiarygodnego narzędzia do grupowania notowań spółek giełdowych oraz analizy wydarzeń historycznych}
+  \begin{itemize}
+    \item {\color{gray}w oparciu o algorytm k-means;}
+    \item {\color{gray}z możliwością tworzenia wykresów analizowanych danych;}
+    \item {\bf z naniesionymi wydarzeniami historycznymi.}
+  \end{itemize}
+  \item {\color{gray}Dobranie odpowiednich parametrów do wiarygodnej analizy otrzymanych danych;}
+  \item {\color{gray}Zanotowanie obserwacji i podjęcie próby wyciągnięcia pierwszych wniosków;}
+  \item {\bf Rozbudowa narzędzia o inne narzędzia}
+  \item {\bf Ponowne dobranie parametrów do analizy otrzymanych danych;}
+  \item {\bf Zanotowanie obserwacji i wyciągnięcie wniosków;}
+  \item {\bf Porównanie z wynikami osiągniętymi podczas analiz opartych o wyniki algorytmu k-means.}
+\end{enumerate}
+}
+
+\frame{
+\frametitle{Metody grupowania danych}
 \begin{itemize}
   \item K-means.
   \item Hierarchical clustering.
@@ -88,7 +128,10 @@
  \item Dla wektorów cen daje bardzo liczne grupy, ale spółki zachowują się podobnie w obrębie grup;
  \item Dla wektorów różnic cen daje w zasadzie jedną bardzo liczną grupę spółek, co uniemożliwia sensowną analizę;
  \item W obydwu przypadkach przynajmniej połowa otrzymanych grup to grupy zawierające niewielką ilość spółek (1,2,3).
+ \item Niezrównoważony (choć rozsądny, poza 1 duża grupą) podział w grupach.
  \end{itemize}
+ Skuteczność: przeciętna.
+ Nie próbowaliśmy innych miar odległości.
 }
 
 \frame{
@@ -97,19 +140,45 @@
  Ilość grup: 5, 10, 20;
  Miara odległości: euklidesowa.
  \begin{itemize}
- \item TODO
+ \item Daje w zasadzie jedną bardzo liczną grupę spółek, co uniemożliwia sensowną analizę;
+ \item Niezrównoważony (choć dość rozsądny, poza 1 dużą grupą) podział w grupach.
  \end{itemize}
+ Skuteczność: słaba.
+ Nie próbowaliśmy innych miar odległości.
 }
 
 \frame{
  \frametitle{Self-Organizing maps}
  \begin{itemize}
- \item TODO
+ \item Zrównoważony (rozsądnie wyglądający) podział w grupach;
+ \item Dużo elementów nieprzystających do danej grupy;
  \end{itemize}
+ Skuteczność: najwyższa (z wykorzystanych metod).
+ Nie próbowaliśmy innych miar odległości.
 }
+
+\frame{
+\frametitle{Wyniki}
+\begin{itemize}
+\item pojedyncze wydarzenia wykazują pewne tendencje, ale brakuje nam danych statystycznych do potwierdzenia ewentualnych tez
+\item brak znaczących osiągnięć :-(
+\end{itemize}
+...ale pozostaje spore pole do popisu!
+}
+
 
 \section{Plany na przyszłość}
 \frame{
+\begin{itemize}
+\item reorganizacja grup wydarzeń, większa granulacja
+\item uzupełnienie listy wydarzeń:
+	\begin{itemize}
+	\item wydarzeniami o większym znaczeniu;
+	\item większą ilością wydarzeń;
+	\end{itemize}
+\item zebranie danych z okresu wyborczego i porównanie notowań z wynikami prognoz wyborczych
+\item wydłużenie okresu, z którego pochodzą notowania i wydarzenia;
+\end{itemize}
 }
 
 \section{Używane narzędzia}
