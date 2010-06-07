@@ -64,8 +64,9 @@ def generate_gnuplot_command(files_list, output_file, include_events):
 	#87CEEB #8B008B #FFA07A #00FF00 #800000 #808000 #4169E1 #708090 
 	"""
 	colours = colours_str.split()
-	plots_colours = zip(files_list, colours)
-	plots = [ '"%s" lt rgb "%s" with lines'%pair for pair in plots_colours]
+	cluster_numbers = range(len(files_list))
+	plots_colours = zip(files_list, colours, cluster_numbers)
+	plots = [ '"%s" lt rgb "%s" with lines title "grupa %d"'%triple for triple in plots_colours ]
 	cmd ="""
 	set term gif size 1024, 768
 	%s
@@ -226,8 +227,8 @@ if __name__ == "__main__":
 		%s
 		%s
 		set output '%s.gif'
-		plot '%s' with lines
-		""" % ( set_xrange, gen_labels(include_events), output_file_path, plot_data_tmpfile_path))
+		plot '%s' with lines title "grupa %d"
+		""" % ( set_xrange, gen_labels(include_events), output_file_path, plot_data_tmpfile_path, cluster_number))
 
 		gnuplot_commands_tmpfile.close()
 
